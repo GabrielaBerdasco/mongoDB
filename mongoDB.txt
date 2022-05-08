@@ -220,4 +220,140 @@ productos
 { "_id" : ObjectId("62770b28419667377aded609"), "name" : "Repisa Flotante", "image" : ".jpg", "price" : 3829, "stock" : 100 }
 
 
+## 6. Crear usuario "pepe"
+
+
+> use admin
+switched to db admin
+> db.createUser({"user": "pepe", "pwd": "asd456", "roles": [{"role": "read", "db": "ecommerce"}]})
+Successfully added user: {
+        "user" : "pepe",
+        "roles" : [
+                {
+                        "role" : "read",
+                        "db" : "ecommerce"
+                }
+        ]
+}
+C:\CODER\BACKEND\mongoDB>mongo -u pepe -p asd456
+MongoDB shell version v5.0.8
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("14b08cf0-9538-4597-bfcd-396472781262") }MongoDB server version: 5.0.8
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+
+> use ecommerce
+switched to db ecommerce
+> show collections
+mensajes
+productos
+> db.productos.find()
+{ "_id" : ObjectId("627738bef9f0c2c5803c80dd"), "name" : "yerbera negra", "image" : ".jpg", "price" : 1116, "stock" : 100 }
+{ "_id" : ObjectId("627738cef9f0c2c5803c80e0"), "name" : "Yerbera rosa", "image" 
+: ".jpg", "price" : 1116, "stock" : 100 }
+{ "_id" : ObjectId("627738cef9f0c2c5803c80e1"), "name" : "set yerbera y azucarera", "image" : ".jpg", "price" : 1182, "stock" : 100 }
+{ "_id" : ObjectId("627738ddf9f0c2c5803c80e3"), "name" : "Cuadro", "image" : ".jpg", "price" : 3580, "stock" : 100 }
+{ "_id" : ObjectId("627738ddf9f0c2c5803c80e4"), "name" : "Centro de mesa", "image" : ".jpg", "price" : 2122, "stock" : 100 }
+{ "_id" : ObjectId("627738ddf9f0c2c5803c80e5"), "name" : "Set de platos", "image" : ".jpg", "price" : 4300, "stock" : 0 }
+{ "_id" : ObjectId("627738ddf9f0c2c5803c80e6"), "name" : "Frutera cobre", "image" : ".jpg", "price" : 4999, "stock" : 0 }
+{ "_id" : ObjectId("62773915f9f0c2c5803c80e7"), "name" : "Repisa Flotante", "image" : ".jpg", "price" : 3829, "stock" : 100 }
+>
+> db.mensajes.insert({"author": "Juan", "text": "hola", "date": "24/06"})        
+WriteResult({ "nInserted" : 1 })
+>
+
+> use admin
+switched to db admin
+> db.createUser({"user": "pepe", "pwd": "asd456", "roles": [{"role": "read", "db": "ecommerce"}]})
+Successfully added user: {
+        "user" : "pepe",
+        "roles" : [
+                {
+                        "role" : "read",
+                        "db" : "ecommerce"
+                }
+        ]
+}
+> ^C
+bye
+
+C:\Users\gabri>mongo -u "pepe" -p "asd456"
+MongoDB shell version v5.0.8
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("76092cbf-4010-499a-b003-a331245b7bc7") }
+MongoDB server version: 5.0.8
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2022-05-08T00:25:14.186-03:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+        2022-05-08T00:25:14.188-03:00: This server is bound to localhost. Remote systems will be unable to connect to this server. Start the server with --bind_ip <address> to specify which IP addresses it should serve responses from, or with --bind_ip_all to bind to all interfaces. If this behavior is desired, start the server with --bind_ip 127.0.0.1 to disable this warning
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> use admin
+switched to db admin
+> use ecommerce
+switched to db ecommerce
+> show collection
+uncaught exception: Error: don't know how to show [collection] :
+shellHelper.show@src/mongo/shell/utils.js:1211:11
+shellHelper@src/mongo/shell/utils.js:838:15
+@(shellhelp2):1:1
+> show collections
+mensajes
+productos
+> db.mensajes.find()
+{ "_id" : ObjectId("6277387cf9f0c2c5803c80d3"), "author" : "Jose", "text" : "Hola", "date" : ISODate("2022-05-08T03:26:52.292Z") }
+{ "_id" : ObjectId("6277387cf9f0c2c5803c80d4"), "author" : "Nico", "text" : "Hola", "date" : ISODate("2022-05-08T03:26:52.292Z") }
+{ "_id" : ObjectId("6277387cf9f0c2c5803c80d5"), "author" : "Ignacio", "text" : "Hola", "date" : ISODate("2022-05-08T03:26:52.292Z") }
+{ "_id" : ObjectId("62773897f9f0c2c5803c80d6"), "author" : "Leonardo", "text" : "Hola", "date" : ISODate("2022-05-08T03:27:19.430Z") }
+{ "_id" : ObjectId("62773897f9f0c2c5803c80d7"), "author" : "Nico", "text" : "Como estan?", "date" : ISODate("2022-05-08T03:27:19.430Z") }
+{ "_id" : ObjectId("62773897f9f0c2c5803c80d8"), "author" : "Ignacio", "text" : "Bien", "date" : ISODate("2022-05-08T03:27:19.430Z") }
+{ "_id" : ObjectId("62773897f9f0c2c5803c80d9"), "author" : "Jose", "text" : "Bien", "date" : ISODate("2022-05-08T03:27:19.430Z") }
+{ "_id" : ObjectId("62773897f9f0c2c5803c80da"), "author" : "Leonardo", "text" : "Bien", "date" : ISODate("2022-05-08T03:27:19.430Z") }
+{ "_id" : ObjectId("627738acf9f0c2c5803c80db"), "author" : "Virginia", "text" : "Buenas tardes", "date" : ISODate("2022-05-08T03:27:40.474Z") }
+{ "_id" : ObjectId("627738acf9f0c2c5803c80dc"), "author" : "Mari", "text" : "Hola", "date" : ISODate("2022-05-08T03:27:40.474Z") }
+{ "_id" : ObjectId("62773d9ba2b03efcf1fcc6b2"), "author" : "Juan", "text" : "hola", "date" : "24/06" }
+> db.mensajes.deleteOne({"author": "Juan"})
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.mensajes.find()
+{ "_id" : ObjectId("6277387cf9f0c2c5803c80d3"), "author" : "Jose", "text" : "Hola", "date" : ISODate("2022-05-08T03:26:52.292Z") }
+{ "_id" : ObjectId("6277387cf9f0c2c5803c80d4"), "author" : "Nico", "text" : "Hola", "date" : ISODate("2022-05-08T03:26:52.292Z") }
+{ "_id" : ObjectId("6277387cf9f0c2c5803c80d5"), "author" : "Ignacio", "text" : "Hola", "date" : ISODate("2022-05-08T03:26:52.292Z") }
+{ "_id" : ObjectId("62773897f9f0c2c5803c80d6"), "author" : "Leonardo", "text" : "Hola", "date" : ISODate("2022-05-08T03:27:19.430Z") }
+{ "_id" : ObjectId("62773897f9f0c2c5803c80d7"), "author" : "Nico", "text" : "Como estan?", "date" : ISODate("2022-05-08T03:27:19.430Z") }
+{ "_id" : ObjectId("62773897f9f0c2c5803c80d8"), "author" : "Ignacio", "text" : "Bien", "date" : ISODate("2022-05-08T03:27:19.430Z") }
+{ "_id" : ObjectId("62773897f9f0c2c5803c80d9"), "author" : "Jose", "text" : "Bien", "date" : ISODate("2022-05-08T03:27:19.430Z") }
+{ "_id" : ObjectId("62773897f9f0c2c5803c80da"), "author" : "Leonardo", "text" : "Bien", "date" : ISODate("2022-05-08T03:27:19.430Z") }
+{ "_id" : ObjectId("627738acf9f0c2c5803c80db"), "author" : "Virginia", "text" : "Buenas tardes", "date" : ISODate("2022-05-08T03:27:40.474Z") }
+{ "_id" : ObjectId("627738acf9f0c2c5803c80dc"), "author" : "Mari", "text" : "Hola", "date" : ISODate("2022-05-08T03:27:40.474Z") }
+>
+
+
+CONCLUSIÓN punto 6... Por lo que leí para poder habilitar roles primero es necesario crear
+un usuario admin. Intenté hacerlo siguiendo tutoriales de la documentación oficial pero en lugar de mongo utilizaban 
+mongosh. Lo hice igual, incluso reinicié mongod con el comando -auth, rompí todo. La solución más rápida fue borrar
+todas las carpetas en data, ejecutando nuevamente mongod, volviendo a crear la db, colecciones y documentos 
+y así restaurar todo.
 
