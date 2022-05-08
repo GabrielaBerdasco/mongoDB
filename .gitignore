@@ -1,3 +1,9 @@
 node_modules/
 
-data/
+data/journal/
+
+public1/
+
+routes1/
+
+server.js*

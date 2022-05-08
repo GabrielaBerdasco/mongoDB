@@ -1,0 +1,223 @@
+> show databases
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+
+## Creación y puesta en uso de base de datos
+
+> use ecommerce
+switched to db ecommerce
+
+## 1. Inicio de colecciones e inserción de 10 documentos en cada uncaught
+
+
+> db.mensajes.insert([{"author": "Jose", "text": "Hola", "date": ISODate()}, {"author": "Nico", "text": "Hola", "date": ISODate()}, "author": "Ignacio", "text": "Hola", "date": ISODate()}])
+uncaught exception: SyntaxError: missing ] after element list :
+@(shell):1:138
+> db.mensajes.insert([{"author": "Jose", "text": "Hola", "date": ISODate()}, {"author": "Nico", "text": "Hola", "date": ISODate()}, {"author": "Ignacio", "text": "Hola", "date": ISODate()}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 3,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.mensajes.insert([{"author": "Leonardo", "text": "Hola", "date": ISODate()}, {"author": "Nico", "text": "Como estan?", "date": ISODate()}, {"author": "Ignacio", "text": "Bien", "date": ISODate()}, {"author": "Jose", "text": "Bien", "date": ISODate()}, {"author": "Leonardo", "text": "Bien", "date": ISODate()}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 5,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.mensajes.insert([{"author": "Virginia", "text": "Buenas tardes", "date": ISODate()}, {"author": "Mari", "text": "Hola", "date": ISODate()}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 2,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.productos.insert([{"name": "yerbera negra", "image": ".jpg", "price": 1116}, {"name": "Escurridor", "image": ".jpg", "price": 552}, {"name": "Mate shine", "image": ".jpg", "price": 506}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 3,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.productos.insert([{"name": "Yerbera rosa", "image": ".jpg", "price": 1116}, {"name": "set yerbera y azucarera", "image": ".jpg", "price": 1182}, {"name": "Velas en cuenco de madera", "image": ".jpg", "price": 654}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 3,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.productos.insert([{"name": "Cuadro", "image": ".jpg", "price": 3580}, {"name": "Centro de mesa", "image": ".jpg", "price": 2122}, {"name": "Set de platos", "image": ".jpg", "price": 4300}, {"name": "Frutera cobre", "image": ".jpg", "price": 4999}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 4,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+
+## 3. Listar las colecciones y sus documentos
+
+
+> show collections
+mensajes
+productos
+> db.mensajes.find()
+{ "_id" : ObjectId("62770370419667377aded5f5"), "author" : "Jose", "text" : "Hola", "date" : ISODate("2022-05-07T23:40:32.640Z") }
+{ "_id" : ObjectId("62770370419667377aded5f6"), "author" : "Nico", "text" : "Hola", "date" : ISODate("2022-05-07T23:40:32.640Z") }
+{ "_id" : ObjectId("62770370419667377aded5f7"), "author" : "Ignacio", "text" : "Hola", "date" : ISODate("2022-05-07T23:40:32.640Z") }
+{ "_id" : ObjectId("6277047a419667377aded5f8"), "author" : "Leonardo", "text" : "Hola", "date" : ISODate("2022-05-07T23:44:58.196Z") }
+{ "_id" : ObjectId("6277047a419667377aded5f9"), "author" : "Nico", "text" : "Como estan?", "date" : ISODate("2022-05-07T23:44:58.196Z") }
+{ "_id" : ObjectId("6277047a419667377aded5fa"), "author" : "Ignacio", "text" : "Bien", "date" : ISODate("2022-05-07T23:44:58.196Z") }
+{ "_id" : ObjectId("6277047a419667377aded5fb"), "author" : "Jose", "text" : "Bien", "date" : ISODate("2022-05-07T23:44:58.196Z") }
+{ "_id" : ObjectId("6277047a419667377aded5fc"), "author" : "Leonardo", "text" : "Bien", "date" : ISODate("2022-05-07T23:44:58.196Z") }
+{ "_id" : ObjectId("62770517419667377aded5fd"), "author" : "Virginia", "text" : "Buenas tardes", "date" : ISODate("2022-05-07T23:47:35.406Z") }
+{ "_id" : ObjectId("62770517419667377aded5fe"), "author" : "Mari", "text" : "Hola", "date" : ISODate("2022-05-07T23:47:35.406Z") }
+> db.productos.find()
+{ "_id" : ObjectId("62770760419667377aded5ff"), "name" : "yerbera negra", "image" : ".jpg", "price" : 1116 }
+{ "_id" : ObjectId("62770760419667377aded600"), "name" : "Escurridor", "image" : ".jpg", "price" : 552 }
+{ "_id" : ObjectId("62770760419667377aded601"), "name" : "Mate shine", "image" : ".jpg", "price" : 506 }
+{ "_id" : ObjectId("62770843419667377aded602"), "name" : "Yerbera rosa", "image" : ".jpg", "price" : 1116 }
+{ "_id" : ObjectId("62770843419667377aded603"), "name" : "set yerbera y azucarera", "image" : ".jpg", "price" : 1182 }
+{ "_id" : ObjectId("62770843419667377aded604"), "name" : "Velas en cuenco de madera", "image" : ".jpg", "price" : 654 }
+{ "_id" : ObjectId("62770962419667377aded605"), "name" : "Cuadro", "image" : ".jpg", "price" : 3580 }
+{ "_id" : ObjectId("62770962419667377aded606"), "name" : "Centro de mesa", "image" : ".jpg", "price" : 2122 }
+{ "_id" : ObjectId("62770962419667377aded607"), "name" : "Set de platos", "image" : ".jpg", "price" : 4300 }
+{ "_id" : ObjectId("62770962419667377aded608"), "name" : "Frutera cobre", "image" : ".jpg", "price" : 4999 }
+
+## 4. Cantidad de documentos en cada colección
+
+
+> db.mensajes.estimatedDocumentCount()
+10
+> db.productos.estimatedDocumentCount()
+10
+
+## 5. Colección productos
+
+
+### 5. a. Agregar un producto
+
+
+> db.productos.insertOne({"name": "Repisa Flotante", "image": ".jpg", "price": 3829})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("62770b28419667377aded609")
+}
+
+### 5. b. Consulta por nombre específico
+
+### 5. b. i. Productos precio < 1000
+
+
+> db.productos.find({"price": {$lt: 1000}})
+{ "_id" : ObjectId("62770760419667377aded600"), "name" : "Escurridor", "image" : ".jpg", "price" : 552 }
+{ "_id" : ObjectId("62770760419667377aded601"), "name" : "Mate shine", "image" : ".jpg", "price" : 506 }
+{ "_id" : ObjectId("62770843419667377aded604"), "name" : "Velas en cuenco de madera", "image" : ".jpg", "price" : 654 }
+> db.productos.find({"price": {$lt: 1000}}, {"name": 1, "_id": 0})
+{ "name" : "Escurridor" }
+{ "name" : "Mate shine" }
+{ "name" : "Velas en cuenco de madera" }
+
+### 5. b. ii. Productos precio entre 1000 y 3000
+
+
+> db.productos.find({$and: [{"price": {$gt: 1000}}, {"price": {$lt: 3000}}]}, {"name": 1, "_id": 0})
+{ "name" : "yerbera negra" }
+{ "name" : "Yerbera rosa" }
+{ "name" : "set yerbera y azucarera" }
+{ "name" : "Centro de mesa" }
+
+### 5. b. iii. Productos precio > 3000
+
+
+> db.productos.find({"price": {$gt: 3000}}, {"name": 1, "_id": 0})
+{ "name" : "Cuadro" }
+{ "name" : "Set de platos" }
+{ "name" : "Frutera cobre" }
+{ "name" : "Repisa Flotante" }
+
+### 5. b. iv. Tercer producto precio más bajo
+
+
+> db.productos.find({}, {"name": 1, "_id": 0}).sort({"price": 1}).skip(2).limit(1)
+{ "name" : "Velas en cuenco de madera" }
+
+### 5. c. Agregar stock en 100
+
+
+> db.productos.updateMany({}, {$set: {"stock": 100}})
+{ "acknowledged" : true, "matchedCount" : 11, "modifiedCount" : 11 }
+> db.productos.find()
+{ "_id" : ObjectId("62770760419667377aded5ff"), "name" : "yerbera negra", "image" : ".jpg", "price" : 1116, "stock" : 100 }
+{ "_id" : ObjectId("62770760419667377aded600"), "name" : "Escurridor", "image" : ".jpg", "price" : 552, "stock" : 100 }
+{ "_id" : ObjectId("62770760419667377aded601"), "name" : "Mate shine", "image" : ".jpg", "price" : 506, "stock" : 100 }
+{ "_id" : ObjectId("62770843419667377aded602"), "name" : "Yerbera rosa", "image" : ".jpg", "price" : 1116, "stock" : 100 }
+{ "_id" : ObjectId("62770843419667377aded603"), "name" : "set yerbera y azucarera", "image" : ".jpg", "price" : 1182, "stock" : 100 }
+{ "_id" : ObjectId("62770843419667377aded604"), "name" : "Velas en cuenco de madera", "image" : ".jpg", "price" : 654, "stock" : 100 }
+{ "_id" : ObjectId("62770962419667377aded605"), "name" : "Cuadro", "image" : ".jpg", "price" : 3580, "stock" : 100 }
+{ "_id" : ObjectId("62770962419667377aded606"), "name" : "Centro de mesa", "image" : ".jpg", "price" : 2122, "stock" : 100 }
+{ "_id" : ObjectId("62770962419667377aded607"), "name" : "Set de platos", "image" : ".jpg", "price" : 4300, "stock" : 100 }
+{ "_id" : ObjectId("62770962419667377aded608"), "name" : "Frutera cobre", "image" : ".jpg", "price" : 4999, "stock" : 100 }
+{ "_id" : ObjectId("62770b28419667377aded609"), "name" : "Repisa Flotante", "image" : ".jpg", "price" : 3829, "stock" : 100 }
+
+### 5. d. Stock en 0, productos con precio mayor a 4000 
+
+
+> db.productos.updateMany({"price": {$gt: 4000}}, {$set: {"stock": 0}})
+{ "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 2 }
+> db.productos.find()
+{ "_id" : ObjectId("62770760419667377aded5ff"), "name" : "yerbera negra", "image" : ".jpg", "price" : 1116, "stock" : 100 }
+{ "_id" : ObjectId("62770760419667377aded600"), "name" : "Escurridor", "image" : ".jpg", "price" : 552, "stock" : 100 }
+{ "_id" : ObjectId("62770760419667377aded601"), "name" : "Mate shine", "image" : ".jpg", "price" : 506, "stock" : 100 }
+{ "_id" : ObjectId("62770843419667377aded602"), "name" : "Yerbera rosa", "image" : ".jpg", "price" : 1116, "stock" : 100 }
+{ "_id" : ObjectId("62770843419667377aded603"), "name" : "set yerbera y azucarera", "image" : ".jpg", "price" : 1182, "stock" : 100 }
+{ "_id" : ObjectId("62770843419667377aded604"), "name" : "Velas en cuenco de madera", "image" : ".jpg", "price" : 654, "stock" : 100 }
+{ "_id" : ObjectId("62770962419667377aded605"), "name" : "Cuadro", "image" : ".jpg", "price" : 3580, "stock" : 100 }
+{ "_id" : ObjectId("62770962419667377aded606"), "name" : "Centro de mesa", "image" : ".jpg", "price" : 2122, "stock" : 100 }
+{ "_id" : ObjectId("62770962419667377aded607"), "name" : "Set de platos", "image" : ".jpg", "price" : 4300, "stock" : 0 }
+{ "_id" : ObjectId("62770962419667377aded608"), "name" : "Frutera cobre", "image" : ".jpg", "price" : 4999, "stock" : 0 }
+{ "_id" : ObjectId("62770b28419667377aded609"), "name" : "Repisa Flotante", "image" : ".jpg", "price" : 3829, "stock" : 100 }
+
+### 5. e. Borrar productos con precio menor a 1000
+
+
+> db.productos.deleteMany({"price": {$lt: 1000}})
+{ "acknowledged" : true, "deletedCount" : 3 }
+> db.productos.find()
+{ "_id" : ObjectId("62770760419667377aded5ff"), "name" : "yerbera negra", "image" : ".jpg", "price" : 1116, "stock" : 100 }
+{ "_id" : ObjectId("62770843419667377aded602"), "name" : "Yerbera rosa", "image" : ".jpg", "price" : 1116, "stock" : 100 }
+{ "_id" : ObjectId("62770843419667377aded603"), "name" : "set yerbera y azucarera", "image" : ".jpg", "price" : 1182, "stock" : 100 }
+{ "_id" : ObjectId("62770962419667377aded605"), "name" : "Cuadro", "image" : ".jpg", "price" : 3580, "stock" : 100 }
+{ "_id" : ObjectId("62770962419667377aded606"), "name" : "Centro de mesa", "image" : ".jpg", "price" : 2122, "stock" : 100 }
+{ "_id" : ObjectId("62770962419667377aded607"), "name" : "Set de platos", "image" : ".jpg", "price" : 4300, "stock" : 0 }
+{ "_id" : ObjectId("62770962419667377aded608"), "name" : "Frutera cobre", "image" : ".jpg", "price" : 4999, "stock" : 0 }
+{ "_id" : ObjectId("62770b28419667377aded609"), "name" : "Repisa Flotante", "image" : ".jpg", "price" : 3829, "stock" : 100 }
+
+
+
