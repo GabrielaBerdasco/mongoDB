@@ -357,3 +357,88 @@ mongosh. Lo hice igual, incluso reinicié mongod con el comando -auth, rompí to
 todas las carpetas en data, ejecutando nuevamente mongod, volviendo a crear la db, colecciones y documentos 
 y así restaurar todo.
 
+### Revisión punto 6 en nueva base de datos
+
+
+C:\Users\gabri>mongo -u "encargado" -p "asd456"
+MongoDB shell version v5.0.8
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("6adf7496-fb46-4a1c-ae3a-8226c0b4d95e") }
+MongoDB server version: 5.0.8
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+> show databases
+ecommerce  0.000GB
+> use ecommerce
+switched to db ecommerce
+> db.mensajes.find()
+{ "_id" : ObjectId("62795149b692a2ef63e306f0"), "author" : "Jose", "text" : "Hola", "date" : ISODate("2022-05-09T17:37:13.907Z") }
+{ "_id" : ObjectId("62795149b692a2ef63e306f1"), "author" : "Nico", "text" : "Hola", "date" : ISODate("2022-05-09T17:37:13.907Z") }
+{ "_id" : ObjectId("62795149b692a2ef63e306f2"), "author" : "Ignacio", "text" : "Hola", "date" : ISODate("2022-05-09T17:37:13.907Z") }
+{ "_id" : ObjectId("6279515db692a2ef63e306f3"), "author" : "Leonardo", "text" : "Hola", "date" : ISODate("2022-05-09T17:37:33.805Z") }
+{ "_id" : ObjectId("6279515db692a2ef63e306f4"), "author" : "Nico", "text" : "Como estan?", "date" : ISODate("2022-05-09T17:37:33.805Z") }
+{ "_id" : ObjectId("6279515db692a2ef63e306f5"), "author" : "Ignacio", "text" : "Bien", "date" : ISODate("2022-05-09T17:37:33.805Z") }
+{ "_id" : ObjectId("6279515db692a2ef63e306f6"), "author" : "Jose", "text" : "Bien", "date" : ISODate("2022-05-09T17:37:33.805Z") }
+{ "_id" : ObjectId("6279515db692a2ef63e306f7"), "author" : "Leonardo", "text" : "Bien", "date" : ISODate("2022-05-09T17:37:33.805Z") }
+{ "_id" : ObjectId("6279516fb692a2ef63e306f8"), "author" : "Virginia", "text" : "Buenas tardes", "date" : ISODate("2022-05-09T17:37:51.399Z") }
+{ "_id" : ObjectId("6279516fb692a2ef63e306f9"), "author" : "Mari", "text" : "Hola", "date" : ISODate("2022-05-09T17:37:51.399Z") }
+> db.mensajes.insert({"author": "encargado", "text": "check", "date": ISODate()})
+WriteResult({ "nInserted" : 1 })
+> db.mensajes.find()
+{ "_id" : ObjectId("62795149b692a2ef63e306f0"), "author" : "Jose", "text" : "Hola", "date" : ISODate("2022-05-09T17:37:13.907Z") }
+{ "_id" : ObjectId("62795149b692a2ef63e306f1"), "author" : "Nico", "text" : "Hola", "date" : ISODate("2022-05-09T17:37:13.907Z") }
+{ "_id" : ObjectId("62795149b692a2ef63e306f2"), "author" : "Ignacio", "text" : "Hola", "date" : ISODate("2022-05-09T17:37:13.907Z") }
+{ "_id" : ObjectId("6279515db692a2ef63e306f3"), "author" : "Leonardo", "text" : "Hola", "date" : ISODate("2022-05-09T17:37:33.805Z") }
+{ "_id" : ObjectId("6279515db692a2ef63e306f4"), "author" : "Nico", "text" : "Como estan?", "date" : ISODate("2022-05-09T17:37:33.805Z") }
+{ "_id" : ObjectId("6279515db692a2ef63e306f5"), "author" : "Ignacio", "text" : "Bien", "date" : ISODate("2022-05-09T17:37:33.805Z") }
+{ "_id" : ObjectId("6279515db692a2ef63e306f6"), "author" : "Jose", "text" : "Bien", "date" : ISODate("2022-05-09T17:37:33.805Z") }
+{ "_id" : ObjectId("6279515db692a2ef63e306f7"), "author" : "Leonardo", "text" : "Bien", "date" : ISODate("2022-05-09T17:37:33.805Z") }
+{ "_id" : ObjectId("6279516fb692a2ef63e306f8"), "author" : "Virginia", "text" : "Buenas tardes", "date" : ISODate("2022-05-09T17:37:51.399Z") }
+{ "_id" : ObjectId("6279516fb692a2ef63e306f9"), "author" : "Mari", "text" : "Hola", "date" : ISODate("2022-05-09T17:37:51.399Z") }
+{ "_id" : ObjectId("627953ba9d008eab7f678d1a"), "author" : "encargado", "text" : "check", "date" : ISODate("2022-05-09T17:47:38.735Z") }
+> ^C
+bye
+
+C:\Users\gabri>mongo -u "pepe" -p "asd456"
+MongoDB shell version v5.0.8
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("590146be-9409-4f82-bb5b-8282d7f9b20f") }
+MongoDB server version: 5.0.8
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+> show databases
+ecommerce  0.000GB
+> use ecommerce
+switched to db ecommerce
+> db.mensajes.find()
+{ "_id" : ObjectId("62795149b692a2ef63e306f0"), "author" : "Jose", "text" : "Hola", "date" : ISODate("2022-05-09T17:37:13.907Z") }
+{ "_id" : ObjectId("62795149b692a2ef63e306f1"), "author" : "Nico", "text" : "Hola", "date" : ISODate("2022-05-09T17:37:13.907Z") }
+{ "_id" : ObjectId("62795149b692a2ef63e306f2"), "author" : "Ignacio", "text" : "Hola", "date" : ISODate("2022-05-09T17:37:13.907Z") }
+{ "_id" : ObjectId("6279515db692a2ef63e306f3"), "author" : "Leonardo", "text" : "Hola", "date" : ISODate("2022-05-09T17:37:33.805Z") }
+{ "_id" : ObjectId("6279515db692a2ef63e306f4"), "author" : "Nico", "text" : "Como estan?", "date" : ISODate("2022-05-09T17:37:33.805Z") }
+{ "_id" : ObjectId("6279515db692a2ef63e306f5"), "author" : "Ignacio", "text" : "Bien", "date" : ISODate("2022-05-09T17:37:33.805Z") }
+{ "_id" : ObjectId("6279515db692a2ef63e306f6"), "author" : "Jose", "text" : "Bien", "date" : ISODate("2022-05-09T17:37:33.805Z") }
+{ "_id" : ObjectId("6279515db692a2ef63e306f7"), "author" : "Leonardo", "text" : "Bien", "date" : ISODate("2022-05-09T17:37:33.805Z") }
+{ "_id" : ObjectId("6279516fb692a2ef63e306f8"), "author" : "Virginia", "text" : "Buenas tardes", "date" : ISODate("2022-05-09T17:37:51.399Z") }
+{ "_id" : ObjectId("6279516fb692a2ef63e306f9"), "author" : "Mari", "text" : "Hola", "date" : ISODate("2022-05-09T17:37:51.399Z") }
+{ "_id" : ObjectId("627953ba9d008eab7f678d1a"), "author" : "encargado", "text" : "check", "date" : ISODate("2022-05-09T17:47:38.735Z") }
+> db.mensajes.insert({"author": "pepe", "text": "check", "date": ISODate()})
+WriteCommandError({
+        "ok" : 0,
+        "errmsg" : "not authorized on ecommerce to execute command { insert: \"mensajes\", ordered: true, lsid: { id: UUID(\"590146be-9409-4f82-bb5b-8282d7f9b20f\") }, $db: \"ecommerce\" }",
+        "code" : 13,
+        "codeName" : "Unauthorized"
+})
+
+
+Nueva carpeta de data en [DropBox]("https://www.dropbox.com/sh/r40a4jjgh2htkp4/AACt8zzr-ARB_fdcQ4SFp62ra?dl=0")
